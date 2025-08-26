@@ -122,6 +122,43 @@ int main() {
     exibir_carta_1(); //exibição carta 1
     exibir_carta_2(); // exibição carta 2
     
+    printf("\n\nComparação de Cartas:\n\n");
+
+    // Variáveis de resultado de qual carta vence
+    int resultado_pop = (populacao1 > populacao2);
+    int vencedor_pop   = 1 * resultado_pop + 2 * (populacao2 > populacao1);
+
+    int resultado_area = (area1 > area2);
+    int vencedor_area   = 1 * resultado_area + 2 * (area2 > area1);
+
+    int resultado_pib = (pib1 > pib2);
+    int vencedor_pib   = 1 * resultado_pib + 2 * (pib2 > pib1);
+
+    int resultado_pts = (n_pts_turisticos1 > n_pts_turisticos2);
+    int vencedor_pts   = 1 * resultado_pts + 2 * (n_pts_turisticos2 > n_pts_turisticos1);
+
+    int resultado_densidade = (densidade_pop1 < densidade_pop2); // menor vence
+    int vencedor_densidade   = 1 * resultado_densidade + 2 * (densidade_pop2 < densidade_pop1);
+
+    int resultado_pibcap = (pib_per_capta1 > pib_per_capta2);
+    int vencedor_pibcap   = 1 * resultado_pibcap + 2 * (pib_per_capta2 > pib_per_capta1);
+
+    // calculo de super poder 
+    float super_poder1 = populacao1 + area1 + pib1 + n_pts_turisticos1 + pib_per_capta1 + (1.0 / densidade_pop1);
+    float super_poder2 = populacao2 + area2 + pib2 + n_pts_turisticos2 + pib_per_capta2 + (1.0 / densidade_pop2);
+
+    int resultado_super = (super_poder1 > super_poder2);
+    int vencedor_super   = 1 * resultado_super + 2 * (super_poder2 > super_poder1);
+
+    // Impressões só usando variáveis
+    printf("População: Carta %d venceu (%d)\n", vencedor_pop, resultado_pop);
+    printf("Área: Carta %d venceu (%d)\n", vencedor_area, resultado_area);
+    printf("PIB: Carta %d venceu (%d)\n", vencedor_pib, resultado_pib);
+    printf("Pontos Turísticos: Carta %d venceu (%d)\n", vencedor_pts, resultado_pts);
+    printf("Densidade Populacional: Carta %d venceu (%d)\n", vencedor_densidade, resultado_densidade);
+    printf("PIB per Capita: Carta %d venceu (%d)\n", vencedor_pibcap, resultado_pibcap);
+    printf("Super Poder: Carta %d venceu (%d)\n", vencedor_super, resultado_super);
+
     printf("\n\n");
     return 0;
 }
